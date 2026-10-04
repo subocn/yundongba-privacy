@@ -11,46 +11,172 @@
     h2 { font-size: 1.1rem; margin-top: 1.75rem; }
     .meta { color: #666; font-size: 0.9rem; }
     ul { padding-left: 1.2rem; }
+    .note { background: #f5f7fb; border: 1px solid #dde4ef; border-radius: 8px;
+      padding: 0.75rem 1rem; font-size: 0.9rem; color: #334; }
+    .contact { background: #f5f7fb; border: 1px solid #c9d4e8; border-radius: 10px;
+      padding: 0.9rem 1rem; }
+    .contact .email { font-family: ui-monospace, monospace; font-weight: 600; }
+    .lang-switch { display: flex; gap: 0.5rem; margin: 1rem 0 0.25rem; }
+    .lang-switch input { position: absolute; opacity: 0; pointer-events: none; }
+    .lang-switch label { border: 1px solid #c9d4e8; border-radius: 999px; padding: 0.35rem 1rem;
+      font-size: 0.9rem; cursor: pointer; color: #334; background: #fff; }
+    .lang-switch input:checked + label { background: #2c6df2; border-color: #2c6df2; color: #fff; }
+    .variant { display: none; }
+    #v-zh:checked ~ .variant-zh, #v-tw:checked ~ .variant-tw { display: block; }
   </style>
 </head>
 <body>
   <h1>运动吧 隐私政策</h1>
-  <p class="meta">最后更新：2026-08-05 · 与 App 内「隐私政策」及仓库 <code>docs/PRIVACY_POLICY.md</code> 对齐</p>
+  <p class="meta">最后更新：2026-10-04 · 与 App 内「隐私政策」及 App Store Connect 填写的同一网址对齐 · 同一 URL 提供简体中文与繁体中文正文</p>
+  <div class="note">本页提供简体中文、繁体中文两个正文版本，可在同一 URL 内切换；English 正文在 App 内「我的 → 语言」切换为 English 后查看。</div>
 
-  <h2>一、我们收集什么</h2>
-  <p>运动吧是本地优先的运动打卡工具，遵循数据最小化：</p>
-  <ul>
-    <li>不收集姓名、邮箱、电话号码</li>
-    <li>不要求注册账号即可使用核心功能</li>
-    <li>运动记录默认仅存设备本地 SQLite</li>
-    <li>不含广告 SDK，不做用户画像式行为跟踪</li>
-  </ul>
+  <input type="radio" name="lang" id="v-zh" checked />
+  <input type="radio" name="lang" id="v-tw" />
+  <div class="lang-switch" role="group" aria-label="正文语言">
+    <label for="v-zh">简体中文</label>
+    <label for="v-tw">繁體中文</label>
+  </div>
 
-  <h2>二、可选的数据访问</h2>
-  <ul>
-    <li><strong>健康数据（HealthKit）</strong>：可选；用于导入步数/运动，数据默认不离开设备</li>
-    <li><strong>位置（GPS）</strong>：可选；仅运动路线记录，仅运动期间使用</li>
-    <li><strong>通知</strong>：可选；运动提醒，非营销推送</li>
-    <li><strong>公开赛事联网</strong>：默认关闭；仅在您同意后下载公开赛程/比分 JSON，不上传运动记录或身份信息</li>
-  </ul>
+  <!-- ══════════════ 简体中文正文 ══════════════ -->
+  <div class="variant variant-zh">
+    <p class="note">App Store Connect 填写的隐私政策就是本页 <code>https://subocn.github.io/yundongba-privacy/</code>。App 内「我的 → 设置 → 隐私政策」与本页说的是同一套做法。</p>
+    <h2>一、我们收集什么</h2>
+    <p>运动吧是本地优先的运动日记，遵循数据最小化：</p>
+    <ul>
+      <li>不收集姓名、邮箱、电话号码</li>
+      <li>不要求注册账号即可使用全部功能</li>
+      <li>运动记录默认仅存设备本地 SQLite</li>
+      <li>不含广告 SDK，不做用户画像式行为跟踪</li>
+      <li>为修复崩溃与稳定性问题，发布构建可启用 Sentry 诊断上报（见第三节）</li>
+    </ul>
 
-  <h2>三、数据存储与诊断</h2>
-  <ul>
-    <li>不运营自有后端；核心打卡默认不上传至运动吧服务器</li>
-    <li>iCloud Key-Value 默认同步关闭</li>
-    <li><strong>崩溃诊断（Sentry）</strong>：仅发布构建配置了诊断通道时上报堆栈等技术信息；不含姓名/邮箱/运动明细</li>
-  </ul>
+    <h2>二、可选的数据访问</h2>
+    <ul>
+      <li><strong>健康数据（HealthKit）</strong>：可选；只读取你授权的步数与已有锻炼，用于本机展示和导入。本版本不向「健康」写入锻炼记录、步数或消耗。数据不离开设备</li>
+      <li><strong>位置（GPS）</strong>：可选；仅在开练户外项目期间用「使用期间」定位记录本场路线。本场结束后即停止获取定位。不申请始终定位，不会上传位置。拒绝后仍可计时保存</li>
+      <li><strong>运动与健身（加速度计）</strong>：可选；力量/计数类运动中在本机估算次数，可改用手动计数</li>
+      <li><strong>通知</strong>：可选；非营销推送</li>
+      <li><strong>公开赛事联网</strong>：默认关闭；仅在您同意后下载公开赛程/比分 JSON，不上传运动记录或身份信息</li>
+    </ul>
 
-  <h2>四、儿童与未成年人</h2>
-  <p>不面向 13 岁以下儿童，未提供幼儿专用活动日志或「青少年模式」开关。未满 14 周岁请在监护人指导下使用。</p>
+    <h2>三、数据存储与安全</h2>
+    <ul>
+      <li>运动数据存储在您设备的 SQLite 数据库中</li>
+      <li>运动吧不运营自有后端；核心打卡数据默认不上传至运动吧服务器</li>
+      <li>当前版本默认关闭 iCloud Key-Value 同步；未启用时不会通过 iCloud 传输连胜等数据</li>
+      <li>可选功能（HealthKit、GPS、赛事网络刷新）仅在您授权时使用系统能力或发起网络请求</li>
+      <li><strong>崩溃诊断（Sentry，第三方）</strong>：仅发布构建配置了诊断通道时上报堆栈等技术信息；不含姓名/邮箱/运动明细。未配置则不 init、不上报</li>
+      <li>数据导出功能将数据以 CSV/JSON 格式保存到您的设备</li>
+      <li>导出内容含运动类型、时长、距离、消耗、RPE、备注。当前版本导出文件不含轨迹坐标点</li>
+      <li>删除一条运动记录会连带删除该条的轨迹坐标点，无法单独保留成绩</li>
+      <li>您可以随时删除 App 来清除所有数据</li>
+    </ul>
 
-  <h2>五、您的权利</h2>
-  <ul>
-    <li>可导出数据；删除 App 即清除本地数据</li>
-    <li>无需删除「账户」——我们不要求注册</li>
-  </ul>
+    <h2>四、儿童隐私</h2>
+    <p>运动吧不面向 13 岁以下儿童，也未提供面向幼儿的专用活动日志或「青少年模式」开关。请在监护人指导下由适龄用户使用。</p>
 
-  <h2>六、联系</h2>
-  <p>请在 App 内「给小熊提建议」反馈隐私相关问题。</p>
+    <h2>五、您的权利</h2>
+    <ul>
+      <li>您拥有对您数据的完全控制权</li>
+      <li>可导出数据（设置 → 导出数据）；删除 App 即清除本地数据</li>
+      <li>无需删除「账户」——我们不要求注册</li>
+      <li>可在系统设置中撤回健康、定位、通知权限</li>
+    </ul>
+
+    <h2>六、未成年人保护</h2>
+    <ul>
+      <li>我们特别重视对未成年人个人信息的保护</li>
+      <li>不要求注册账号；核心运动记录默认仅存本地设备</li>
+      <li>无陌生人社交、无应用内广告与付费诱导</li>
+      <li>如您未满 14 周岁，请在监护人指导下使用本 App</li>
+      <li>打卡分享卡默认为私密：只有你点「分享」或「保存」时图片才离开本机；未成年人（未满 14 周岁）不提供「公开」选项</li>
+    </ul>
+
+    <h2>七、联系方式（可收信）</h2>
+    <p>如您对本政策或您的个人信息有任何疑问、意见或投诉，可通过可收信邮箱联系我们，我们会在 15 个工作日内回复：</p>
+    <div class="contact">
+      <strong>📧 联系邮箱（可收信、可投诉）</strong><br />
+      <span class="email">support@yundongba.com</span>
+    </div>
+
+    <h2>八、投诉渠道</h2>
+    <p>如果您认为我们在处理您的个人信息时存在问题，您还可以通过以下渠道投诉：</p>
+    <ul>
+      <li><strong>App Store 评价反馈</strong>：在 iPhone App Store 商店页直接留言</li>
+      <li><strong>邮件投诉</strong>：support@yundongba.com（标题注明「投诉」字样）</li>
+    </ul>
+    <p class="note">我们会在 15 个工作日内回复您；如需协助您行使个人信息权利（导出、删除），请一并告知。</p>
+  </div>
+
+  <!-- ══════════════ 繁體中文正文（同一 URL）══════════════ -->
+  <div class="variant variant-tw">
+    <p class="note">App Store Connect 填寫的隱私政策就是本頁 <code>https://subocn.github.io/yundongba-privacy/</code>。App 內「我的 → 設定 → 隱私政策」與本頁說的是同一套做法。</p>
+    <h2>一、我們收集什麼</h2>
+    <p>運動吧是一款本機優先的運動日記。我們遵循資料最小化：</p>
+    <ul>
+      <li>不收集您的姓名、郵箱、電話號碼</li>
+      <li>不要求註冊帳號即可使用全部功能</li>
+      <li>所有運動記錄僅儲存在您的裝置本地 SQLite 資料庫中</li>
+      <li>不包含廣告 SDK，不做使用者畫像式行為追蹤</li>
+      <li>為修復崩潰與穩定性問題，發布構建可啟用 Sentry 診斷上報（見第三節）</li>
+    </ul>
+
+    <h2>二、可選的資料存取</h2>
+    <ul>
+      <li><strong>健康資料（HealthKit）</strong>：只讀取你授權的步數與已有鍛鍊，用於本機展示和匯入。本版本不向「健康」寫入鍛鍊記錄、步數或消耗。資料不離開您的裝置。</li>
+      <li><strong>位置（GPS）</strong>：僅用於本場戶外運動的路線/距離/配速。只用「使用期間」定位，本場結束後即停止獲取定位，不申請始終定位，不會上傳位置。拒絕後仍可計時保存。</li>
+      <li><strong>運動與健身（加速度計）</strong>：力量/計數類運動中在本機估算次數；可改用手動計數。</li>
+      <li><strong>通知</strong>：可選；非行銷推送。</li>
+      <li><strong>公開賽事資料（可選聯網）</strong>：預設關閉。僅在您同意「賽事網路」後，才會下載公開賽事日程/比分等 JSON；不上傳您的運動記錄、健康資料或個人身分資訊。關閉後僅使用本機快取與內建賽事資料。</li>
+    </ul>
+
+    <h2>三、資料儲存與安全</h2>
+    <ul>
+      <li>運動資料儲存在您裝置的 SQLite 資料庫中</li>
+      <li>運動吧不營運自有後端伺服器；核心打卡資料預設不上傳至運動吧伺服器</li>
+      <li>目前版本預設關閉 iCloud Key-Value 同步；未啟用時不會透過 iCloud 傳輸連勝等資料</li>
+      <li>可選功能（HealthKit、GPS、賽事網路刷新）僅在您授權時使用系統能力或發起網路請求</li>
+      <li><strong>崩潰診斷（Sentry，第三方）</strong>：僅在發布構建配置了診斷通道時，上報崩潰/錯誤堆疊、應用程式版本與裝置型號等技術資訊，用於修復閃退；不包含姓名、郵箱、電話，也不上傳您的運動明細內容。未配置診斷通道的構建不會發起此類上報。</li>
+      <li>資料匯出功能將資料以 CSV/JSON 格式保存到您的裝置</li>
+      <li>匯出內容含運動類型、時長、距離、消耗、RPE、備註。目前版本匯出檔案不含軌跡座標點</li>
+      <li>刪除一條運動記錄會連帶刪除該條的軌跡座標點，無法單獨保留成績</li>
+      <li>您可以隨時刪除 App 來清除所有資料</li>
+    </ul>
+
+    <h2>四、兒童隱私</h2>
+    <p>運動吧不面向 13 歲以下兒童，也未提供面向幼兒的專用活動記錄或「青少年模式」開關。請在監護人指導下由適齡使用者使用。</p>
+
+    <h2>五、您的權利</h2>
+    <ul>
+      <li>您擁有對您資料的完全控制權</li>
+      <li>您可以隨時匯出資料（設定 → 匯出資料）；刪除 App 即永久刪除所有資料</li>
+      <li>無需請求刪除帳號——因為我們不要求您建立帳號</li>
+      <li>可在系統設定中撤回健康、定位、通知權限</li>
+    </ul>
+
+    <h2>六、未成年人保護</h2>
+    <ul>
+      <li>我們特別重視對未成年人個人資訊的保護</li>
+      <li>不要求註冊帳號；核心運動記錄預設僅存本地裝置</li>
+      <li>無陌生人社交、無應用程式內廣告與付費誘導</li>
+      <li>如您未滿 14 歲，請在監護人指導下使用本 App</li>
+      <li>打卡分享卡預設為私密：只有你點「分享」或「儲存」時圖片才離開裝置；未成年人（未滿 14 歲）不提供「公開」選項</li>
+    </ul>
+
+    <h2>七、聯絡方式（可收信）</h2>
+    <p>如您對本政策或您的個人資訊有任何疑問、意見或投訴，可透過可收信郵箱聯絡我們，我們會在 15 個工作日內回覆：</p>
+    <div class="contact">
+      <strong>📧 聯絡郵箱（可收信、可投訴）</strong><br />
+      <span class="email">support@yundongba.com</span>
+    </div>
+
+    <h2>八、投訴管道</h2>
+    <p>如果您認為我們在處理您的個人資訊時存在問題，您還可以透過以下管道投訴：</p>
+    <ul>
+      <li><strong>App Store 評價回饋</strong>：在 iPhone App Store 商店頁直接留言</li>
+      <li><strong>郵件投訴</strong>：support@yundongba.com（標題註明「投訴」字樣）</li>
+    </ul>
+    <p class="note">我們會在 15 個工作日內回覆您；如需協助您行使個人資訊權利（匯出、刪除），請一併告知。</p>
+  </div>
 </body>
 </html>
