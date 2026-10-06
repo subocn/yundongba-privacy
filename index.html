@@ -20,21 +20,29 @@
     .lang-switch input { position: absolute; opacity: 0; pointer-events: none; }
     .lang-switch label { border: 1px solid #c9d4e8; border-radius: 999px; padding: 0.35rem 1rem;
       font-size: 0.9rem; cursor: pointer; color: #334; background: #fff; }
-    .lang-switch input:checked + label { background: #2c6df2; border-color: #2c6df2; color: #fff; }
+    #v-zh:checked ~ .lang-switch label[for="v-zh"],
+    #v-tw:checked ~ .lang-switch label[for="v-tw"],
+    #v-en:checked ~ .lang-switch label[for="v-en"] {
+      background: #2c6df2; border-color: #2c6df2; color: #fff;
+    }
     .variant { display: none; }
-    #v-zh:checked ~ .variant-zh, #v-tw:checked ~ .variant-tw { display: block; }
+    #v-zh:checked ~ .variant-zh,
+    #v-tw:checked ~ .variant-tw,
+    #v-en:checked ~ .variant-en { display: block; }
   </style>
 </head>
 <body>
   <h1>运动吧 隐私政策</h1>
-  <p class="meta">最后更新：2026-10-04 · 与 App 内「隐私政策」及 App Store Connect 填写的同一网址对齐 · 同一 URL 提供简体中文与繁体中文正文</p>
-  <div class="note">本页提供简体中文、繁体中文两个正文版本，可在同一 URL 内切换；English 正文在 App 内「我的 → 语言」切换为 English 后查看。</div>
+  <p class="meta">最后更新：2026-10-06 · 与 App 内「隐私政策」及 App Store Connect 填写的同一网址对齐 · 同一 URL 提供简体中文、繁体中文与 English</p>
+  <div class="note">本页提供简体中文、繁体中文、English 三个正文版本，可在同一 URL 内切换。打开时按浏览器语言显示，页顶也可手动切换。三种正文说的是同一套做法。</div>
 
   <input type="radio" name="lang" id="v-zh" checked />
   <input type="radio" name="lang" id="v-tw" />
+  <input type="radio" name="lang" id="v-en" />
   <div class="lang-switch" role="group" aria-label="正文语言">
     <label for="v-zh">简体中文</label>
     <label for="v-tw">繁體中文</label>
+    <label for="v-en">English</label>
   </div>
 
   <!-- ══════════════ 简体中文正文 ══════════════ -->
@@ -178,5 +186,86 @@
     </ul>
     <p class="note">我們會在 15 個工作日內回覆您；如需協助您行使個人資訊權利（匯出、刪除），請一併告知。</p>
   </div>
+
+  <!-- ══════════════ English（同一 URL）══════════════ -->
+  <div class="variant variant-en" lang="en">
+    <p class="note">The privacy policy URL filled in App Store Connect is this page: <code>https://subocn.github.io/yundongba-privacy/</code>. Profile → Privacy Policy in the app describes the same practices.</p>
+    <h2>1. What we collect</h2>
+    <p>运动吧 is a local-first workout journal. We follow data minimization:</p>
+    <ul>
+      <li>We do not collect your name, email, or phone number</li>
+      <li>No account is required to use any feature</li>
+      <li>Workout records stay in the on-device SQLite database by default</li>
+      <li>No ad SDKs, and no behavioral profiling or tracking</li>
+      <li>Release builds may enable Sentry crash diagnostics (see section 3)</li>
+    </ul>
+
+    <h2>2. Optional data access</h2>
+    <ul>
+      <li><strong>Health (HealthKit)</strong>: optional. We only read the steps and existing workouts you authorize, for on-device display and import. This version does not write workouts, steps, or calories back to Health. Data does not leave your device.</li>
+      <li><strong>Location (GPS)</strong>: optional. Used only for the current outdoor workout's route, distance, and pace. We request while in use only and stop reading location when that session ends. Never always-on, never uploaded. Decline and the timer and record still work.</li>
+      <li><strong>Motion (accelerometer)</strong>: optional. On-device rep estimates for strength and counting workouts. Manual counting is always available.</li>
+      <li><strong>Notifications</strong>: optional. Never used for marketing.</li>
+      <li><strong>Public events</strong>: off by default. Only after you opt in do we download public schedule and score JSON. We do not upload workouts, health data, or identity.</li>
+    </ul>
+
+    <h2>3. Storage and security</h2>
+    <ul>
+      <li>Workout data is stored in SQLite on your device</li>
+      <li>运动吧 does not operate its own backend. Core check-in data is not uploaded to a 运动吧 server by default</li>
+      <li>This version disables iCloud Key-Value sync by default. Streaks are not sent through iCloud while it stays off</li>
+      <li>Optional features (HealthKit, GPS, events refresh) use system capabilities or the network only after you allow them</li>
+      <li><strong>Crash diagnostics (Sentry, third party)</strong>: only a release build with a configured diagnostic channel reports stacks and technical details. That report does not include your name, email, or workout content. A build without that channel does not initialize Sentry and does not send reports</li>
+      <li>Export saves CSV or JSON on your device</li>
+      <li>Exported fields are sport type, duration, distance, calories, RPE, and notes. The current export does not include GPS track coordinates</li>
+      <li>Deleting a workout record also deletes that record's GPS track coordinates. You cannot keep the stats and drop only the track</li>
+      <li>Deleting the app erases the local data</li>
+    </ul>
+
+    <h2>4. Children's privacy</h2>
+    <p>运动吧 is not directed at children under 13. There is no child-only activity log and no teen-mode switch. Underage users should use it with a guardian.</p>
+
+    <h2>5. Your rights</h2>
+    <ul>
+      <li>You control your data</li>
+      <li>Export from Settings → Export Data. Deleting the app clears local data</li>
+      <li>There is no account to delete, because no account is required</li>
+      <li>You can revoke Health, Location, and Notifications in system Settings</li>
+    </ul>
+
+    <h2>6. Minors</h2>
+    <ul>
+      <li>We pay particular attention to minors' personal information</li>
+      <li>No account is required. Core workout records stay on the device by default</li>
+      <li>No stranger social features, no in-app ads, and no paid-promotion nudges</li>
+      <li>If you are under 14, please use the app with a guardian</li>
+      <li>Check-in share cards are private by default. The image leaves the device only when you tap Share or Save. Minors under 14 do not get a Public option</li>
+    </ul>
+
+    <h2>7. Contact</h2>
+    <p>Questions, comments, or complaints about this policy or your personal information can be sent to the mailbox below. We reply within 15 business days.</p>
+    <div class="contact">
+      <strong>Contact email (inquiries and complaints)</strong><br />
+      <span class="email">support@yundongba.com</span>
+    </div>
+
+    <h2>8. Complaint channels</h2>
+    <p>If you believe we handled your personal information incorrectly, you can also use:</p>
+    <ul>
+      <li><strong>App Store review</strong>: leave a message on the iPhone App Store listing</li>
+      <li><strong>Email</strong>: support@yundongba.com (put “Complaint” in the subject)</li>
+    </ul>
+    <p class="note">We reply within 15 business days. If you need help exporting or deleting your data, say so in the same message.</p>
+  </div>
+  <script>
+    (function () {
+      var lang = (navigator.language || "").toLowerCase();
+      var id = "v-zh";
+      if (lang.indexOf("en") === 0) id = "v-en";
+      else if (lang.indexOf("hant") >= 0 || lang.indexOf("tw") >= 0 || lang.indexOf("hk") >= 0 || lang.indexOf("mo") >= 0) id = "v-tw";
+      var el = document.getElementById(id);
+      if (el) el.checked = true;
+    })();
+  </script>
 </body>
 </html>
